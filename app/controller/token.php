@@ -51,7 +51,10 @@ class Token extends Base
 
         $token = JWT::encode($data, getenv("JWT_SECRET"));
 
-        $json  = array('token' => $token);
+        $json['code'] = 0;
+        $json['note'] = 'Success.';
+        $json['data'] = array('token' => $token);
+        $json['help'] = 'http://api.app.com';
 
         // setcookie("token", $token, time() + 7200);
         

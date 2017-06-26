@@ -1,9 +1,5 @@
 <?php
 
-$app->add(new Dolphin\Tan\Middleware\Weixin());
-
-$app->add(new Dolphin\Tan\Middleware\Zhi());
-
 // JSON Web Tokens 身份验证中间件 https://github.com/tuupola/slim-jwt-auth
 $app->add(
     new \Slim\Middleware\JwtAuthentication(

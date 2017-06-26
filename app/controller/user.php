@@ -11,14 +11,14 @@ use Dolphin\Tan\Model\User as Model_user;
 * 简单的类介绍
 *  
 * @category Controller
-* @package  Home
+* @package  User
 * @author   dolphin.wang <416509859@qq.com>
 * @license  MIT https://mit-license.org 
 * @link     https://github.com/dolphin836/Slim-Skeleton-MVC
 * @since    2017-05-18
 **/
 
-class Home extends Base
+class User extends Base
 {
     /**
     * 构造函数
@@ -43,14 +43,20 @@ class Home extends Base
     **/
     public function index($request, $response, $args)
     {   
-        // 设置页面的基本信息
-        $this->data['title']       = 'Slim App';
-        $this->data['keywords']    = 'Slim';
-        $this->data['description'] = 'Slim-Skeleton-MVC 是基于 Slim Framework 的脚手架。'; 
-        // 引入额外的页面资源
-        $this->data['css'][]       = 'dist/css/app.css?20170616160400';
+        $json         = array();
 
-        return $this->app->view->render('home', ['data' => $this->data]);
+        // 这是一个 Library 使用的例子
+        $lib_weixin   = new Lib_weixin();
+        $sign         = $lib_weixin->sign($this->data);
+
+        $json['code'] = 0;
+        $json['note'] = 'Success.';
+        $json['data'] = array('sign' => $sign);
+        $json['help'] = 'http://api.app.com';
+
+        return $response->withStatus(200)
+            ->withHeader("Content-Type", "application/json")
+            ->write(json_encode($json));
     }
 
     /**
@@ -62,7 +68,7 @@ class Home extends Base
     *
     * @return object
     **/
-    public function view($request, $response, $args)
+    public function user($request, $response, $args)
     {
         $json             = array();
         // Model
@@ -80,7 +86,7 @@ class Home extends Base
             $json['help'] = 'http://api.app.com';
         }
         // Log
-        $this->lib_log->write($json);
+        $this->app->log->write($json);
 
         return $response->withStatus(200)
             ->withHeader("Content-Type", "application/json")
