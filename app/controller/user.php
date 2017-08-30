@@ -50,7 +50,7 @@ class User extends Base
         $sign         = $lib_weixin->sign($this->data);
 
         $json['code'] = 0;
-        $json['note'] = 'Success.';
+        $json['note'] = 'Success. 001.';
         $json['data'] = array('sign' => $sign);
         $json['help'] = 'http://api.app.com';
 
