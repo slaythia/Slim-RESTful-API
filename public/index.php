@@ -1,6 +1,6 @@
 <?php
 
-echo '001';
+echo '002';
 
 exit;
 
