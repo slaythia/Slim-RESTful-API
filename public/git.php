@@ -1,6 +1,8 @@
 <?php
 
-    exec('sudo sh ../git.sh');
+    $output = array();
+
+    exec('sh ../git.sh', $output);
 
 
 
