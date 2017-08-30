@@ -1,6 +1,6 @@
 <?php
 
-echo '006';
+echo '007';
 
 exit;
 
