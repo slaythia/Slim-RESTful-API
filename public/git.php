@@ -2,7 +2,7 @@
 
     $output = array();
 
-    exec('sh ../git.sh', $output);
+    exec('git pull origin master', $output);
 
     var_dump($output);
 
