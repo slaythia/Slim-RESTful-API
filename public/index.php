@@ -1,5 +1,9 @@
 <?php
 
+echo '001';
+
+exit;
+
 define('VERSIONR', '1.0.0');
 
 define('BASEPATH', __DIR__);
